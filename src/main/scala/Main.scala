@@ -14,10 +14,10 @@ object Main {
     implicit val materializer: ActorMaterializer = ActorMaterializer()
     implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
-    // ✅ Database config loaded from application.conf
+    // Database config loaded from application.conf
     val db = Database.forConfig("mydb")
 
-    // ✅ Pass db and executionContext to the repository
+    // Pass db and executionContext to the repository
     val userRepo = new UserRepository(db)(executionContext)
 
     val routes = UserRoutes(userRepo)
